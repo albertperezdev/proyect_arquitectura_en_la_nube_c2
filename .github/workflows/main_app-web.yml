@@ -1,5 +1,13 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
+- name: Verificar contenido del artefacto
+  run: |
+    ls -la ./dist || true
+    # Cambia mi-app por el nombre real en angular.json
+    ls -la ./dist/mi-app || true
+    test -f ./dist/mi-app/index.html || (echo "Falta index.html en dist/mi-app" && exit 1)
+
+
 
 name: Build and deploy Node.js app to Azure Web App - app-web
 
@@ -63,3 +71,4 @@ jobs:
           package: .
 
           
+
